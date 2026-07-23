@@ -4,7 +4,7 @@
 componentes ("Legos") pero tienen identidad visual, paleta, tipografía y copy 100% propios.
 
 - **`apps/highend`** — Template A: high-end, residencial de lujo (cinemático, charcoal, serif).
-- **`apps/lowcost`** — Template B: low-cost, orientado a volumen y conversión. _(en construcción)_
+- **`apps/lowcost`** — Template B: low-cost, orientado a volumen y conversión (luminoso, verde/ámbar, teléfono tappable + formulario corto + urgencia).
 - **`packages/ui`** — `@ledge/ui`: los Legos compartidos + tokens (Button, Card, Section, Grid,
   ImageSlot, Gallery, Lightbox, BeforeAfter).
 

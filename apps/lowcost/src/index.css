@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   TEMPLATE B · GREENLEAF — IDENTIDAD (luminosa, cálida, confiable, conversión)
+   Los VALORES de los tokens de @ledge/ui para ESTA app. Tema claro, sans amigable,
+   verde fresco + ámbar cálido para CTAs y urgencia.
+   ============================================================================ */
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef4ee; /* verde muy claro */
+  --color-ink: #17251d; /* verde-slate oscuro */
+  --color-muted: #56655c;
+  --color-line: #e0e8e2;
+
+  --color-brand: #2f9e44; /* verde fresco = confianza */
+  --color-brand-fg: #ffffff;
+  --color-accent: #f08c00; /* ámbar cálido = CTA / urgencia */
+  --color-accent-fg: #ffffff;
+
+  --font-display: 'Plus Jakarta Sans';
+  --font-body: 'Inter';
+
+  --radius-card: 16px; /* redondeado = amigable */
+  --radius-control: 10px;
+  --container-max: 78rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-brand;
+  }
+  /* Píldora de urgencia (cupos limitados, etc.) */
+  .badge-urgency {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold text-accent;
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  }
+}
