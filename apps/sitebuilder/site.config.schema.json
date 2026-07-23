@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Ledge Sitebuilder site.config.json",
+  "description": "The single source of truth for a client site. Editing this file re-themes and re-populates the entire site.",
+  "type": "object",
+  "required": ["business", "goal"],
+  "additionalProperties": true,
+  "properties": {
+    "business": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "description": "Business name — drives titles, header, and schema." },
+        "tagline": { "type": "string", "description": "Short value proposition (hero subhead)." },
+        "oneLineDescription": { "type": "string", "description": "One sentence: what you do, for whom. Feeds meta descriptions and llms.txt." },
+        "yearEstablished": { "type": "string" },
+        "type": { "type": "string", "description": "schema.org type/subtype, e.g. LocalBusiness, Restaurant, HVACBusiness, Dentist." }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "address": {
+          "type": "object",
+          "properties": {
+            "street": { "type": "string" },
+            "city": { "type": "string" },
+            "region": { "type": "string" },
+            "postalCode": { "type": "string" },
+            "country": { "type": "string" }
+          }
+        },
+        "serviceArea": { "type": "string" },
+        "hours": { "type": "string" },
+        "googleBusinessProfileUrl": { "type": "string" },
+        "social": { "type": "array", "items": { "type": "string" } },
+        "formEndpoint": { "type": "string", "description": "Optional Formspree (or compatible) URL for the contact form. Empty → posts to the Cloudflare Pages Function at /api/contact." }
+      }
+    },
+    "goal": {
+      "type": "object",
+      "required": ["primaryCTA"],
+      "properties": {
+        "primaryCTA": {
+          "type": "string",
+          "enum": ["call", "book", "form", "purchase", "credibility"],
+          "description": "Drives the main call-to-action button."
+        }
+      }
+    },
+    "audience": {
+      "type": "object",
+      "properties": {
+        "customerDescription": { "type": "string" },
+        "topQuestions": {
+          "type": "array",
+          "description": "Becomes both the visible FAQ and the FAQPage structured data.",
+          "items": {
+            "oneOf": [
+              { "type": "string", "description": "Question only (no answer) — dropped from FAQ + schema." },
+              {
+                "type": "object",
+                "required": ["question", "answer"],
+                "properties": {
+                  "question": { "type": "string" },
+                  "answer": { "type": "string", "description": "Answer-first: lead with the direct answer, then elaborate." }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "priceInfo": { "type": "string" }
+        }
+      }
+    },
+    "proof": {
+      "type": "object",
+      "properties": {
+        "testimonials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["quote"],
+            "properties": {
+              "quote": { "type": "string" },
+              "author": { "type": "string" },
+              "detail": { "type": "string" }
+            }
+          }
+        },
+        "reviewCount": { "type": "string" },
+        "credentials": { "type": "array", "items": { "type": "string" } },
+        "notableClients": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "properties": {
+        "logoPath": { "type": "string", "description": "Path under /public. Empty → auto monogram + wordmark." },
+        "colors": {
+          "type": "object",
+          "properties": {
+            "primary": { "type": "string", "description": "Hex color, e.g. #0D6E6E." },
+            "secondary": { "type": "string" },
+            "accent": { "type": "string" }
+          }
+        },
+        "radius": { "type": "string", "description": "Corner radius token, e.g. 14px." },
+        "fonts": {
+          "type": "object",
+          "properties": {
+            "display": { "type": "string", "description": "CSS font-family override for headings." },
+            "body": { "type": "string", "description": "CSS font-family override for body text." }
+          }
+        }
+      }
+    },
+    "deploy": {
+      "type": "object",
+      "properties": {
+        "domain": { "type": "string" },
+        "subdomainFallback": { "type": "string" },
+        "host": { "type": "string" }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "lastUpdated": { "type": "string", "description": "ISO date (YYYY-MM-DD). Shown as the visible 'Last updated'; defaults to build date." }
+      }
+    }
+  }
+}

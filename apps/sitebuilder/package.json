@@ -1,0 +1,30 @@
+{
+  "name": "ledge-sitebuilder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ledge sitebuilder — a reusable, config-driven, answer-engine-ready marketing website engine. One repo, many clients: each client is a folder under clients/<slug>/; a script selects one and it deploys to Cloudflare Pages.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "validate": "node scripts/validate-config.cjs",
+    "use": "node scripts/use-client.mjs",
+    "clients": "node scripts/use-client.mjs --list"
+  },
+  "dependencies": {
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
+  }
+}

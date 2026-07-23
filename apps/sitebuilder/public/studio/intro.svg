@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Designed garden with stone path">
+  <defs>
+    <linearGradient id="isky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef0e2"/><stop offset="1" stop-color="#dfe3cd"/>
+    </linearGradient>
+    <linearGradient id="ig" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6f8f4e"/><stop offset="1" stop-color="#516f38"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#isky)"/>
+  <path d="M0 360 C 250 320, 520 350, 780 335 C 980 322, 1100 350, 1200 338 L1200 900 L0 900 Z" fill="url(#ig)"/>
+  <path d="M470 900 C 520 640, 590 520, 650 430 C 690 470, 720 600, 760 900 Z" fill="#cdbb90"/>
+  <path d="M505 900 C 545 660, 600 560, 650 470 C 685 540, 715 640, 735 900 Z" fill="#e0d2ad" opacity="0.8"/>
+  <g fill="#3f5a30"><ellipse cx="200" cy="360" rx="140" ry="170"/><ellipse cx="120" cy="420" rx="90" ry="110"/></g>
+  <g fill="#8fae63"><circle cx="900" cy="430" r="60"/><circle cx="980" cy="470" r="45"/><circle cx="840" cy="470" r="42"/></g>
+  <g fill="#b7744c"><circle cx="360" cy="560" r="18"/><circle cx="410" cy="540" r="14"/><circle cx="315" cy="545" r="13"/></g>
+  <g fill="#c98a5f"><circle cx="1040" cy="560" r="16"/><circle cx="1000" cy="575" r="12"/></g>
+</svg>

@@ -1,46 +1,53 @@
-# Ledge Landscaping Sites — monorepo
+# Ledge Templates — monorepo
 
-**Un solo repo, dos sitios de landscaping completamente distintos**, que comparten una base de
-componentes ("Legos") pero tienen identidad visual, paleta, tipografía y copy 100% propios.
+**Un solo repo, el hogar de TODOS los templates de sitios web de Ledge.** Cada template es una app
+independiente que corre y se despliega por su cuenta. Hay dos "motores":
 
-- **`apps/highend`** — Template A: high-end, residencial de lujo (cinemático, charcoal, serif).
-- **`apps/lowcost`** — Template B: low-cost, orientado a volumen y conversión (luminoso, verde/ámbar, teléfono tappable + formulario corto + urgencia).
-- **`packages/ui`** — `@ledge/ui`: los Legos compartidos + tokens (Button, Card, Section, Grid,
-  ImageSlot, Gallery, Lightbox, BeforeAfter).
+**Vite — templates hechos a mano (comparten `@ledge/ui`):**
+- **`apps/highend`** — high-end, residencial de lujo (cinemático, charcoal, serif).
+- **`apps/lowcost`** — low-cost, orientado a conversión (luminoso, verde/ámbar, teléfono tappable + formulario corto + urgencia).
 
-Stack: **React + Vite + TypeScript + Tailwind + React Router**, npm workspaces, listo para Vercel.
+**Next.js — motor config-driven (otro tipo de producto):**
+- **`apps/sitebuilder`** — genera sitios de cliente editando un archivo de config; trae 2 looks: **`classic`** y **`studio`**. Se despliega en **Cloudflare Pages** (no Vercel) y tiene su propio README/CLAUDE dentro.
+
+**Compartido:**
+- **`packages/ui`** — `@ledge/ui`: los Legos + tokens (Button, Card, Section, Grid, ImageSlot, Gallery, Lightbox, BeforeAfter). Lo usan las apps de Vite.
+
+Stack: **React + Vite + TS + Tailwind + React Router** (highend/lowcost) · **Next.js** (sitebuilder). npm workspaces.
 
 ## Estructura
 
 ```
-landscaping-sites/
+ledge-templates/
 ├── package.json            # workspaces: ["packages/*", "apps/*"]
 ├── tsconfig.base.json
 ├── packages/
-│   └── ui/                 # @ledge/ui — componentes compartidos + tailwind-preset (tokens)
+│   └── ui/                 # @ledge/ui — Legos compartidos + tailwind-preset (tokens)
 └── apps/
-    ├── highend/            # Template A (app Vite independiente)
-    └── lowcost/            # Template B (app Vite independiente)
+    ├── highend/            # Vite — residencial de lujo
+    ├── lowcost/            # Vite — conversión / volumen
+    └── sitebuilder/        # Next.js — motor config-driven (looks: classic, studio)
 ```
 
-## Cómo funciona el "Lego" compartido
+## Cómo funciona el "Lego" compartido (apps de Vite)
 
-- Cada app resuelve `@ledge/ui` por un **alias de Vite** hacia su código fuente
-  (`packages/ui/src`). No hay paso de build para el paquete, y con `resolve.dedupe` hay
-  **una sola copia de React**.
-- `@ledge/ui/tailwind-preset.cjs` define los **tokens semánticos** (colores, fuentes, radios) como
-  CSS variables. Cada app pone los **valores** de esas variables en su `src/index.css` — por eso
-  los Legos adoptan la identidad de cada app sin tocar el paquete compartido.
-- Regla de oro: lo genuinamente reutilizable (layout, grid, imágenes, lightbox) va en `packages/ui`;
-  lo que da identidad (paleta, tipografía, tono, copy) vive en cada app.
+- Cada app de Vite resuelve `@ledge/ui` por un **alias** hacia su fuente (`packages/ui/src`). Sin
+  paso de build, y con `resolve.dedupe` hay **una sola copia de React**.
+- `@ledge/ui/tailwind-preset.cjs` define **tokens semánticos** (colores, fuentes, radios) como CSS
+  variables; cada app pone los **valores** en su `src/index.css`. Así los Legos adoptan la identidad
+  de cada app sin tocar el paquete.
+- Regla de oro: lo reutilizable (layout, grid, imágenes, lightbox) va en `packages/ui`; lo que da
+  identidad (paleta, tipografía, tono, copy) vive en cada app.
+- El **sitebuilder** (Next.js) es autocontenido: tiene sus propios componentes y no usa `@ledge/ui`.
 
 ## Correr en local
 
 ```bash
-npm install            # una vez, en la raíz (instala todos los workspaces)
+npm install               # una vez, en la raíz (instala todos los workspaces)
 
-npm run dev:highend    # Template A  → http://localhost:5173
-npm run dev:lowcost    # Template B  → (cuando exista)
+npm run dev:highend       # Vite   → http://localhost:5173
+npm run dev:lowcost       # Vite   → http://localhost:5174
+npm run dev:sitebuilder   # Next   → http://localhost:3000
 ```
 
 Cada app también corre sola con `npm run dev` desde su carpeta.
@@ -48,25 +55,23 @@ Cada app también corre sola con `npm run dev` desde su carpeta.
 ## Build
 
 ```bash
-npm run build:highend  # genera apps/highend/dist
-npm run build:lowcost
-npm run build          # ambas
+npm run build:highend      # apps/highend/dist
+npm run build:lowcost      # apps/lowcost/dist
+npm run build:sitebuilder  # apps/sitebuilder/out (export estático Next)
+npm run build              # las tres
 ```
 
-## Deploy en Vercel (una app por proyecto)
+## Deploy (una app por proyecto)
 
-Cada app se despliega como **su propio proyecto de Vercel**, apuntando a su carpeta:
+Cada app se despliega por separado, apuntando a su carpeta:
 
-| Setting | highend | lowcost |
-|---|---|---|
-| **Root Directory** | `apps/highend` | `apps/lowcost` |
-| **Framework Preset** | Vite | Vite |
-| **Build Command** | `npm run build` | `npm run build` |
-| **Output Directory** | `dist` | `dist` |
-| **Install Command** | `npm install` (en la raíz del repo) | igual |
+| App | Host | Root Directory | Build | Output |
+|---|---|---|---|---|
+| `apps/highend` | Vercel | `apps/highend` | `npm run build` | `dist` |
+| `apps/lowcost` | Vercel | `apps/lowcost` | `npm run build` | `dist` |
+| `apps/sitebuilder` | Cloudflare Pages | `apps/sitebuilder` | `npm run build` | `out` |
 
-Vercel detecta el monorepo e instala desde la raíz; el Root Directory apunta a la app a construir.
-Cada app trae su `vercel.json` con el rewrite SPA para que React Router funcione al refrescar.
+Las apps de Vite traen su `vercel.json` (rewrite SPA). El sitebuilder trae su propio README con los
+ajustes de Cloudflare Pages.
 
-> **Replicable y escalable:** para un tercer sitio, se agrega otra carpeta en `apps/` que reusa
-> `@ledge/ui` con su propia identidad — un repo, N sitios.
+> **Replicable y escalable:** para un template nuevo, se agrega otra carpeta en `apps/` — un repo, N sitios.

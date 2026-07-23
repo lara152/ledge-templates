@@ -1,0 +1,9 @@
+# Normalize line endings — the site builds on Linux (Cloudflare Pages).
+* text=auto eol=lf
+
+# Binary assets
+*.woff binary
+*.woff2 binary
+*.png binary
+*.jpg binary
+*.ico binary

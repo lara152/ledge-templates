@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Native meadow planting">
+  <defs>
+    <linearGradient id="g2s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7ecd6"/><stop offset="1" stop-color="#d3dcb8"/></linearGradient>
+    <linearGradient id="g2f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8aa758"/><stop offset="1" stop-color="#647f3d"/></linearGradient>
+  </defs>
+  <rect width="1000" height="750" fill="url(#g2s)"/>
+  <path d="M0 300 C 260 270, 540 295, 1000 275 L1000 750 L0 750 Z" fill="url(#g2f)"/>
+  <g stroke="#4f6a34" stroke-width="5" stroke-linecap="round">
+    <path d="M120 750 C 110 560, 130 470, 120 400"/><path d="M170 750 C 165 560, 185 480, 178 420"/>
+    <path d="M250 750 C 245 580, 262 500, 255 450"/><path d="M820 750 C 812 560, 832 470, 824 410"/>
+    <path d="M880 750 C 876 580, 894 500, 886 440"/>
+  </g>
+  <g fill="#d9a24b"><circle cx="120" cy="395" r="16"/><circle cx="255" cy="445" r="15"/><circle cx="824" cy="405" r="16"/></g>
+  <g fill="#b7607f"><circle cx="178" cy="415" r="14"/><circle cx="886" cy="435" r="14"/></g>
+  <g fill="#eae0a0"><circle cx="480" cy="470" r="18"/><circle cx="560" cy="500" r="15"/><circle cx="420" cy="510" r="13"/></g>
+</svg>

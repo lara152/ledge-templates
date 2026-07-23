@@ -1,0 +1,127 @@
+{
+  "template": "classic",
+  "business": {
+    "name": "Northline Heating & Cooling",
+    "tagline": "Comfort that lasts. Service that shows up.",
+    "oneLineDescription": "Family-owned HVAC repair, installation, and maintenance for homes across the west Denver metro — same-week service, technicians who explain the work, and honest upfront pricing.",
+    "yearEstablished": "2009",
+    "type": "HVACBusiness"
+  },
+  "contact": {
+    "phone": "+1 303-555-0142",
+    "email": "hello@northlinehvac.com",
+    "address": {
+      "street": "4820 Kipling Street, Suite 12",
+      "city": "Wheat Ridge",
+      "region": "CO",
+      "postalCode": "80033",
+      "country": "US"
+    },
+    "serviceArea": "Wheat Ridge, Denver, Arvada, Golden, Lakewood & the west Denver metro",
+    "hours": "Mon–Fri 7am–7pm · Sat 8am–4pm · 24/7 emergency line",
+    "googleBusinessProfileUrl": "https://www.google.com/maps/place/Northline+Heating+%26+Cooling",
+    "formEndpoint": "",
+    "social": [
+      "https://www.facebook.com/northlinehvac",
+      "https://www.instagram.com/northlinehvac"
+    ]
+  },
+  "goal": { "primaryCTA": "call" },
+  "audience": {
+    "customerDescription": "Homeowners in the west Denver metro who want a comfortable house without the runaround — clear pricing, technicians who explain what they're doing, and systems that keep working long after the truck leaves.",
+    "topQuestions": [
+      {
+        "question": "How much does a new furnace or AC installation cost?",
+        "answer": "Most full system replacements in our area run between $6,500 and $14,000 installed, depending on the size of your home, the efficiency rating you choose, and whether ductwork needs modifying. We give you a fixed, itemized quote before any work starts — no surprises, and no pressure to buy more system than your home needs."
+      },
+      {
+        "question": "How fast can you come out for a repair?",
+        "answer": "We reserve same-week appointments for repairs and run a 24/7 emergency line for no-heat and no-cool situations. Most non-emergency service calls are scheduled within 1–2 business days, and we give you a two-hour arrival window so you're not waiting around all day."
+      },
+      {
+        "question": "Do you service my area?",
+        "answer": "We cover Wheat Ridge, Denver, Arvada, Golden, Lakewood, and the surrounding west Denver metro. If you're just outside that range, call us — we'll tell you honestly whether we can help or point you to someone who can."
+      },
+      {
+        "question": "Are your technicians licensed, insured, and background-checked?",
+        "answer": "Yes. Northline is fully licensed (CO HVAC #4471) and insured, every technician is NATE-certified and background-checked, and we're a factory-authorized Carrier dealer. The person in your home is a trained employee — never a day-labor sub."
+      },
+      {
+        "question": "Do you offer financing and maintenance plans?",
+        "answer": "We offer approved financing on new system installs with monthly payments, and our Comfort Club maintenance plan covers two tune-ups a year, priority scheduling, and a discount on repairs. Both are optional — we'll walk you through the numbers so you can decide."
+      }
+    ]
+  },
+  "services": [
+    {
+      "name": "Heating & furnace repair",
+      "description": "Fast, accurate diagnosis and repair for furnaces, heat pumps, and boilers — most fixes done in a single visit, with the failed part shown to you and the cost agreed before we start.",
+      "priceInfo": "Diagnostic $89, waived with repair"
+    },
+    {
+      "name": "Air conditioning service & install",
+      "description": "AC tune-ups, repairs, and high-efficiency system replacements sized correctly for your home so you get even cooling without sky-high summer bills.",
+      "priceInfo": "Installs from $6,500 · financing available"
+    },
+    {
+      "name": "Preventative maintenance",
+      "description": "Seasonal tune-ups that catch small problems before they become no-heat emergencies and keep your manufacturer warranty valid.",
+      "priceInfo": "Comfort Club from $19/mo"
+    },
+    {
+      "name": "Indoor air quality",
+      "description": "Whole-home humidifiers, filtration, and air purification for households dealing with dry winters, allergies, and Front Range dust.",
+      "priceInfo": "Free in-home assessment"
+    },
+    {
+      "name": "Emergency service",
+      "description": "24/7 response for no-heat and no-cool situations, because a broken furnace at 11pm in January can't wait for business hours.",
+      "priceInfo": "Available 24/7/365"
+    }
+  ],
+  "proof": {
+    "testimonials": [
+      {
+        "quote": "Our furnace died during the first cold snap and Northline had a tech at the house before noon the next day. He showed me the cracked part, quoted the fix on the spot, and had heat back on within the hour.",
+        "author": "Danielle R.",
+        "detail": "Wheat Ridge homeowner"
+      },
+      {
+        "quote": "We got three quotes for a new AC and Northline was the only one who actually measured the house instead of upselling us. Two summers in and the upstairs is finally cool.",
+        "author": "Marcus T.",
+        "detail": "Arvada · full system replacement"
+      },
+      {
+        "quote": "The Comfort Club plan is worth it just for the peace of mind. They catch things early and we've never had a surprise breakdown since we signed up.",
+        "author": "Priya & Sam K.",
+        "detail": "Golden · maintenance members since 2021"
+      }
+    ],
+    "reviewCount": "480+",
+    "credentials": [
+      "Licensed & insured — CO HVAC #4471",
+      "NATE-certified technicians",
+      "Factory-authorized Carrier dealer",
+      "BBB A+ accredited"
+    ],
+    "notableClients": [
+      "Front Range Property Management",
+      "Applewood HOA"
+    ]
+  },
+  "brand": {
+    "logoPath": "",
+    "radius": "14px",
+    "colors": {
+      "primary": "#0D6E6E",
+      "secondary": "#123B4F",
+      "accent": "#E9A23B"
+    }
+  },
+  "deploy": {
+    "domain": "northlinehvac.com",
+    "subdomainFallback": "northline-hvac.pages.dev",
+    "host": "cloudflare-pages"
+  },
+  "meta": { "lastUpdated": "2026-07-20" }
+}

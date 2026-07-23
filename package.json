@@ -1,8 +1,8 @@
 {
-  "name": "ledge-landscaping-sites",
+  "name": "ledge-templates",
   "private": true,
   "version": "0.0.0",
-  "description": "Monorepo: dos sitios de landscaping (high-end + low-cost) que comparten @ledge/ui.",
+  "description": "Ledge web-templates monorepo — hand-built Vite templates (highend, lowcost) sharing @ledge/ui + the Next.js config-driven sitebuilder (classic, studio). One repo, all templates.",
   "workspaces": [
     "packages/*",
     "apps/*"
@@ -10,9 +10,11 @@
   "scripts": {
     "dev:highend": "npm run dev --workspace apps/highend",
     "dev:lowcost": "npm run dev --workspace apps/lowcost",
+    "dev:sitebuilder": "npm run dev --workspace apps/sitebuilder",
     "build:highend": "npm run build --workspace apps/highend",
     "build:lowcost": "npm run build --workspace apps/lowcost",
-    "build": "npm run build:highend && npm run build:lowcost",
+    "build:sitebuilder": "npm run build --workspace apps/sitebuilder",
+    "build": "npm run build:highend && npm run build:lowcost && npm run build:sitebuilder",
     "preview:highend": "npm run preview --workspace apps/highend",
     "preview:lowcost": "npm run preview --workspace apps/lowcost",
     "lint": "npm run lint --workspaces --if-present",

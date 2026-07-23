@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Token fallbacks. BrandStyle (from site.config.json) overrides the --brand-* and
+ * --surface-contrast tokens at :root; these defaults keep the site correct even if
+ * BrandStyle is absent. Neutral tokens live here (not driven by config) so the type
+ * and surface system stays consistent across every client theme.
+ */
+:root {
+  --brand-primary: #1b4d89;
+  --brand-primary-fg: #ffffff;
+  --brand-primary-soft: #e7edf5;
+  --brand-primary-hover: #163f70;
+  --brand-secondary: #0f1b2d;
+  --brand-secondary-fg: #ffffff;
+  --brand-accent: #e8b04b;
+  --brand-accent-fg: #0b1a20;
+
+  --ink: #101720;
+  --ink-muted: #48535f;
+  --ink-subtle: #6b7482;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --surface-sunken: #f5f7f9;
+  --surface-contrast: #0f1b2d;
+  --surface-contrast-fg: #ffffff;
+  --line: #e6e9ee;
+
+  --radius: 14px;
+
+  --font-display: var(--font-space-grotesk), 'Georgia', serif;
+  --font-body: var(--font-inter), system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    text-wrap: balance;
+    /* Inherit the section's text color so headings work on light AND dark bands
+       (footer / CTA band set a light color; light sections inherit --ink from body). */
+    color: inherit;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Anchor targets clear the sticky header. */
+  :target {
+    scroll-margin-top: 6rem;
+  }
+
+  /* Visible, on-brand focus states everywhere (keyboard accessibility). */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  summary:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--brand-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--brand-primary);
+    color: var(--brand-primary-fg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  .section {
+    @apply py-16 sm:py-24;
+  }
+
+  /* Buttons ---------------------------------------------------------------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-control px-5 py-3 text-[0.95rem] font-semibold leading-none transition-colors duration-200;
+  }
+
+  .btn-primary {
+    background-color: var(--brand-primary);
+    color: var(--brand-primary-fg);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+  }
+  .btn-primary:hover {
+    background-color: var(--brand-primary-hover);
+  }
+
+  .btn-accent {
+    background-color: var(--brand-accent);
+    color: var(--brand-accent-fg);
+  }
+
+  .btn-outline {
+    @apply border;
+    border-color: color-mix(in srgb, var(--ink) 18%, transparent);
+    color: var(--ink);
+    background-color: transparent;
+  }
+  .btn-outline:hover {
+    background-color: var(--surface-sunken);
+  }
+
+  .btn-on-dark {
+    background-color: var(--surface);
+    color: var(--ink);
+  }
+  .btn-on-dark:hover {
+    background-color: color-mix(in srgb, var(--surface) 88%, black);
+  }
+
+  /* Eyebrow / pill labels -------------------------------------------------- */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em];
+    color: var(--brand-primary);
+  }
+
+  .card {
+    @apply rounded-card border bg-[var(--surface-raised)] p-6 shadow-soft;
+  }
+
+  .link-underline {
+    @apply font-medium underline-offset-4 hover:underline;
+    color: var(--brand-primary);
+  }
+}

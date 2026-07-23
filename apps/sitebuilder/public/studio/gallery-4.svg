@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Front yard with stone path">
+  <defs>
+    <linearGradient id="g4s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ede6d2"/><stop offset="1" stop-color="#dcd3b6"/></linearGradient>
+    <linearGradient id="g4f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a9a52"/><stop offset="1" stop-color="#587737"/></linearGradient>
+  </defs>
+  <rect width="1000" height="750" fill="url(#g4s)"/>
+  <rect x="330" y="150" width="340" height="220" rx="6" fill="#c9b58f"/>
+  <polygon points="310,155 690,155 500,60" fill="#8a6f4e"/>
+  <rect x="470" y="270" width="70" height="100" fill="#5a4632"/>
+  <path d="M0 380 C 260 355, 560 380, 1000 360 L1000 750 L0 750 Z" fill="url(#g4f)"/>
+  <path d="M430 750 C 460 600, 490 500, 500 400 C 512 500, 545 600, 575 750 Z" fill="#cdbb90"/>
+  <g fill="#e2d4af" opacity="0.85"><ellipse cx="500" cy="470" rx="34" ry="14"/><ellipse cx="500" cy="540" rx="42" ry="16"/><ellipse cx="500" cy="620" rx="50" ry="18"/></g>
+  <g fill="#3f5a30"><ellipse cx="150" cy="420" rx="110" ry="130"/><ellipse cx="850" cy="420" rx="100" ry="120"/></g>
+  <g fill="#b7744c"><circle cx="270" cy="520" r="15"/><circle cx="740" cy="520" r="15"/></g>
+</svg>

@@ -1,0 +1,175 @@
+{
+  "template": "studio",
+  "business": {
+    "name": "Sage & Stone Landscape Studio",
+    "tagline": "Yards designed for how you live outside",
+    "oneLineDescription": "A landscape design and build studio in Austin creating considered, low-water outdoor spaces — from first sketch to installed garden — for homeowners across the Texas Hill Country.",
+    "yearEstablished": "2014",
+    "type": "LocalBusiness"
+  },
+  "contact": {
+    "phone": "+1 512-555-0179",
+    "email": "hello@sageandstone.studio",
+    "address": {
+      "street": "1908 South Lamar Blvd, Studio 4",
+      "city": "Austin",
+      "region": "TX",
+      "postalCode": "78704",
+      "country": "US"
+    },
+    "serviceArea": "Austin, Westlake, Lakeway, Dripping Springs & the Texas Hill Country",
+    "hours": "Mon–Fri 8am–5pm · Consultations by appointment",
+    "googleBusinessProfileUrl": "https://www.google.com/maps/place/Sage+%26+Stone+Landscape+Studio",
+    "formEndpoint": "",
+    "social": [
+      "https://www.instagram.com/sageandstone.studio",
+      "https://www.facebook.com/sageandstonestudio"
+    ]
+  },
+  "goal": { "primaryCTA": "book" },
+  "audience": {
+    "customerDescription": "Homeowners who want more than a mowed lawn — an outdoor space that's beautiful, water-wise, and built to last. People buying design and craft, who want to see the plan before the first shovel goes in.",
+    "topQuestions": [
+      {
+        "question": "How much does a landscape design cost?",
+        "answer": "Our design packages start at $2,500 for a single area and scale with the size and complexity of your property. Design is a fixed fee you approve before we begin, and it includes a site visit, a full plan, a planting palette, and renderings so you can see the finished garden before anything is built."
+      },
+      {
+        "question": "Do you build what you design, or just draw it?",
+        "answer": "Both. We're a design-and-build studio, so the same team that designs your garden installs it — hardscape, drainage, planting, irrigation, and lighting. You can also take our plan to your own contractor; most clients prefer we see it through so the built result matches the drawing."
+      },
+      {
+        "question": "How long does a project take?",
+        "answer": "Design typically takes 3–5 weeks from the first site visit to an approved plan. Build timelines depend on scope — a refreshed front yard might be a week, a full backyard transformation four to eight. We give you a realistic schedule with your proposal, not a vague promise."
+      },
+      {
+        "question": "Do you design for drought and Texas heat?",
+        "answer": "Always. We lead with native and adapted, low-water plants, efficient drip irrigation, and materials that handle full Texas sun — so your garden looks intentional in August, not just in April, and your water bill stays reasonable."
+      },
+      {
+        "question": "What areas do you serve?",
+        "answer": "We work across Austin, Westlake, Lakeway, Dripping Springs, and the surrounding Hill Country. If you're a little outside that range, reach out — we'll tell you honestly whether we're the right fit for your project."
+      }
+    ]
+  },
+  "services": [
+    {
+      "name": "Landscape design",
+      "description": "A considered, buildable plan — layout, planting palette, materials, and renderings — so you can see and shape your garden before a shovel touches the ground.",
+      "priceInfo": "From $2,500",
+      "image": "/studio/gallery-4.svg"
+    },
+    {
+      "name": "Full-service build & install",
+      "description": "Our own crews bring the plan to life: hardscape, patios, drainage, planting, irrigation, and lighting — finished to a standard that lasts.",
+      "priceInfo": "Custom quote",
+      "image": "/studio/gallery-1.svg"
+    },
+    {
+      "name": "Native & drought-tolerant planting",
+      "description": "Low-water, Hill-Country-adapted planting designed for year-round structure and color that thrives through the Texas summer.",
+      "priceInfo": "Included in design",
+      "image": "/studio/gallery-2.svg"
+    },
+    {
+      "name": "Pools & water features",
+      "description": "Pools, plunge pools, fountains, and rills designed as part of the whole garden — not bolted on afterward.",
+      "priceInfo": "Design + build",
+      "image": "/studio/gallery-3.svg"
+    },
+    {
+      "name": "Garden care & maintenance",
+      "description": "Optional seasonal care that keeps your garden looking its best as it matures — pruning, bed refreshes, and irrigation checks.",
+      "priceInfo": "Plans from $180/mo",
+      "image": "/studio/intro.svg"
+    }
+  ],
+  "hero": {
+    "image": "/studio/hero.svg",
+    "imageAlt": "A designed backyard garden at golden hour with native planting and a stone patio",
+    "headline": "Yards designed for how you live outside",
+    "subhead": "Sage & Stone is an Austin design-and-build studio creating considered, water-wise outdoor spaces — from the first sketch to the finished garden."
+  },
+  "process": {
+    "heading": "From first call to finished garden",
+    "subhead": "A clear, four-step path — you always know what happens next and what it costs.",
+    "steps": [
+      {
+        "title": "Consultation",
+        "description": "We walk your space, talk through how you want to live outside, and set a budget that's honest and real."
+      },
+      {
+        "title": "Design",
+        "description": "A considered plan — layout, planting, and materials — with renderings so you can see it before we build."
+      },
+      {
+        "title": "Build",
+        "description": "Our crews install it right: hardscape, drainage, planting, and lighting, finished to last."
+      },
+      {
+        "title": "Grow",
+        "description": "Optional seasonal care keeps the garden looking its best as it settles in and matures."
+      }
+    ]
+  },
+  "gallery": {
+    "heading": "Gardens we've designed and built",
+    "subhead": "A few recent projects across Austin and the Hill Country.",
+    "items": [
+      { "image": "/studio/gallery-1.svg", "title": "Evening entertaining terrace", "location": "Westlake, TX" },
+      { "image": "/studio/gallery-2.svg", "title": "Native meadow front yard", "location": "Dripping Springs, TX" },
+      { "image": "/studio/gallery-3.svg", "title": "Plunge pool & courtyard", "location": "Austin, TX" },
+      { "image": "/studio/gallery-4.svg", "title": "Hill Country entry garden", "location": "Lakeway, TX" },
+      { "image": "/studio/intro.svg", "title": "Stone path & pollinator beds", "location": "South Austin, TX" },
+      { "image": "/studio/hero.svg", "title": "Full backyard transformation", "location": "Barton Hills, TX" }
+    ]
+  },
+  "about": {
+    "image": "/studio/about.svg",
+    "imageAlt": "A Sage & Stone designer planting in a finished garden",
+    "heading": "Design-led, build-ready",
+    "body": "Sage & Stone started with a simple belief: a garden should be designed with the same care as the house it belongs to. We're a small studio of designers and builders who see every project through — so the garden you approve on paper is the one you live in. We lead with native planting, honest budgets, and craft that gets better with every season."
+  },
+  "proof": {
+    "testimonials": [
+      {
+        "quote": "They listened before they drew anything. The renderings meant there were zero surprises, and the finished yard looks even better than the plan. We use it every single evening.",
+        "author": "Elena & Marco V.",
+        "detail": "Westlake · full backyard design & build"
+      },
+      {
+        "quote": "Our water bill dropped and the garden looks incredible in July, which around here is the real test. Sage & Stone actually design for Texas, not for a magazine in Oregon.",
+        "author": "Dana P.",
+        "detail": "Dripping Springs · native front yard"
+      },
+      {
+        "quote": "One team from sketch to install meant nothing got lost in translation. Thoughtful people, beautiful work, and they showed up when they said they would.",
+        "author": "The Okafor family",
+        "detail": "Barton Hills · courtyard & plunge pool"
+      }
+    ],
+    "reviewCount": "160+",
+    "credentials": [
+      "Licensed irrigation & landscape contractor (TX)",
+      "Fully insured",
+      "Texas SmartScape & native-plant certified",
+      "Featured in Austin Home & Tribeza"
+    ],
+    "notableClients": []
+  },
+  "brand": {
+    "logoPath": "",
+    "radius": "16px",
+    "colors": {
+      "primary": "#35513F",
+      "secondary": "#1E2A22",
+      "accent": "#C06A45"
+    }
+  },
+  "deploy": {
+    "domain": "sageandstone.studio",
+    "subdomainFallback": "sage-and-stone.pages.dev",
+    "host": "cloudflare-pages"
+  },
+  "meta": { "lastUpdated": "2026-07-22" }
+}
