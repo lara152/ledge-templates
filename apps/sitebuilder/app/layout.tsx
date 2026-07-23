@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, Inter, Fraunces } from 'next/font/google';
+import { Space_Grotesk, Inter, Fraunces, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import { BrandStyle } from '@/components/BrandStyle';
 import { JsonLd } from '@/components/JsonLd';
 import { Header } from '@/components/Header';
 import { StudioHeader } from '@/components/studio/StudioHeader';
+import { MeridianHeader } from '@/components/meridian/MeridianHeader';
 import { Footer } from '@/components/Footer';
+import { MeridianFooter } from '@/components/meridian/MeridianFooter';
 import { business, template } from '@/lib/site';
 import { siteUrl } from '@/lib/site';
 import { businessSchema, websiteSchema } from '@/lib/schema';
@@ -14,6 +16,13 @@ const display = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grot
 const body = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 // Editorial serif for the image-forward "studio" template (selected in BrandStyle).
 const serif = Fraunces({ subsets: ['latin'], variable: '--font-fraunces', display: 'swap' });
+// High-contrast serif for the cinematic "meridian" look.
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-cormorant',
+  display: 'swap',
+});
 
 const defaultTitle = business.tagline?.trim()
   ? `${business.name} — ${business.tagline.trim()}`
@@ -47,7 +56,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} ${serif.variable}`}>
+    <html
+      lang="en"
+      className={`${display.variable} ${body.variable} ${serif.variable} ${cormorant.variable}`}
+    >
       <body>
         <BrandStyle />
         <JsonLd data={[businessSchema(), websiteSchema()]} />
@@ -57,9 +69,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        {template === 'studio' ? <StudioHeader /> : <Header />}
+        {template === 'meridian' ? (
+          <MeridianHeader />
+        ) : template === 'studio' ? (
+          <StudioHeader />
+        ) : (
+          <Header />
+        )}
         <main id="main">{children}</main>
-        <Footer />
+        {template === 'meridian' ? <MeridianFooter /> : <Footer />}
       </body>
     </html>
   );

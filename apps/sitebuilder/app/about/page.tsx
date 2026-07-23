@@ -7,6 +7,7 @@ import { StudioPageHeader } from '@/components/studio/StudioPageHeader';
 import { StudioAbout } from '@/components/studio/StudioAbout';
 import { StudioTestimonials } from '@/components/studio/StudioTestimonials';
 import { StudioCta } from '@/components/studio/StudioCta';
+import { MeridianAbout } from '@/components/meridian/MeridianAbout';
 import { breadcrumbSchema } from '@/lib/schema';
 import { config } from '@/lib/config';
 import { business, contact, credentials, template } from '@/lib/site';
@@ -42,6 +43,15 @@ export default function AboutPage() {
       ])}
     />
   );
+
+  if (template === 'meridian') {
+    return (
+      <>
+        {jsonLd}
+        <MeridianAbout />
+      </>
+    );
+  }
 
   if (template === 'studio') {
     return (

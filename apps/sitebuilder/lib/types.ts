@@ -81,6 +81,29 @@ export type Gallery = { heading?: string; subhead?: string; items?: MediaItem[] 
 
 export type AboutSection = { image?: string; imageAlt?: string; heading?: string; body?: string };
 
+/** A portfolio project / case study — used by the image-forward "meridian" look. */
+export type Project = {
+  slug: string;
+  name: string;
+  neighborhood?: string;
+  year?: string;
+  /** Optional single figure, e.g. "$180K backyard renovation". Never a price list. */
+  budget?: string;
+  scope?: string[];
+  summary?: string;
+  cover: MediaItem;
+  gallery?: MediaItem[];
+};
+
+/** A design-build narrative phase (meridian Services): concept → build → deliver. */
+export type ServicePhase = { title: string; body?: string; image?: string };
+
+/** Trust signals (meridian Process / About). */
+export type Trust = { awards?: string[]; certifications?: string[]; press?: string[] };
+
+/** A studio team member (meridian About). */
+export type TeamMember = { name: string; role?: string; image?: string };
+
 export type Testimonial = {
   quote: string;
   author?: string;
@@ -117,8 +140,8 @@ export type Deploy = {
 
 export type Meta = { lastUpdated?: string };
 
-/** Which design the site renders. Defaults to "classic". "studio" is the image-forward look. */
-export type Template = 'classic' | 'studio';
+/** Which design the site renders. Defaults to "classic". "studio"/"meridian" are image-forward looks. */
+export type Template = 'classic' | 'studio' | 'meridian';
 
 export type SiteConfig = {
   /** Design template. Defaults to "classic" when omitted. */
@@ -132,11 +155,16 @@ export type SiteConfig = {
   brand?: Brand;
   deploy?: Deploy;
   meta?: Meta;
-  /** Image-forward template content (used by "studio"; ignored by "classic"). */
+  /** Image-forward template content (used by "studio"/"meridian"; ignored by "classic"). */
   hero?: Hero;
   process?: Process;
   gallery?: Gallery;
   about?: AboutSection;
+  /** "meridian" look content. */
+  projects?: Project[];
+  servicePhases?: ServicePhase[];
+  trust?: Trust;
+  team?: TeamMember[];
 };
 
 /** A FAQ item after normalization — only complete (answered) items survive. */

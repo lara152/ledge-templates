@@ -11,11 +11,21 @@ import { StudioProcess } from '@/components/studio/StudioProcess';
 import { StudioGallery } from '@/components/studio/StudioGallery';
 import { StudioTestimonials } from '@/components/studio/StudioTestimonials';
 import { StudioCta } from '@/components/studio/StudioCta';
+import { MeridianHome } from '@/components/meridian/MeridianHome';
 import { faqSchema, serviceSchemas } from '@/lib/schema';
 import { business, contact, template } from '@/lib/site';
 
 export default function HomePage() {
   const area = contact.serviceArea?.trim();
+
+  if (template === 'meridian') {
+    return (
+      <>
+        <JsonLd data={[...serviceSchemas(), faqSchema()]} />
+        <MeridianHome />
+      </>
+    );
+  }
 
   if (template === 'studio') {
     return (

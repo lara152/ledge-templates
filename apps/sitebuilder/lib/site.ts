@@ -1,5 +1,17 @@
 import { config } from './config';
-import type { AboutSection, Hero, MediaItem, NormalizedFaq, PrimaryCTA, ProcessStep, Template } from './types';
+import type {
+  AboutSection,
+  Hero,
+  MediaItem,
+  NormalizedFaq,
+  PrimaryCTA,
+  ProcessStep,
+  Project,
+  ServicePhase,
+  TeamMember,
+  Template,
+  Trust,
+} from './types';
 
 const PLACEHOLDER_HOST = 'example.com';
 
@@ -178,4 +190,37 @@ export function processSteps(): ProcessStep[] {
 /** The About-page narrative block (studio template). */
 export function aboutSection(): AboutSection {
   return config.about ?? {};
+}
+
+/* ---- "meridian" look helpers -------------------------------------------------- */
+
+/** Portfolio projects with at least a slug, name, and cover image. */
+export function projects(): Project[] {
+  return (config.projects ?? []).filter(
+    (p) => p?.slug?.trim() && p?.name?.trim() && p?.cover?.image?.trim(),
+  );
+}
+
+/** The first N projects, shown full-bleed on the meridian home. */
+export function featuredProjects(n = 3): Project[] {
+  return projects().slice(0, n);
+}
+
+export function projectBySlug(slug: string): Project | undefined {
+  return projects().find((p) => p.slug === slug);
+}
+
+/** Design-build narrative phases (meridian Services). */
+export function servicePhases(): ServicePhase[] {
+  return (config.servicePhases ?? []).filter((p) => p?.title?.trim());
+}
+
+/** Trust signals (awards / certifications / press). */
+export function trust(): Trust {
+  return config.trust ?? {};
+}
+
+/** Studio team members with a name. */
+export function team(): TeamMember[] {
+  return (config.team ?? []).filter((m) => m?.name?.trim());
 }

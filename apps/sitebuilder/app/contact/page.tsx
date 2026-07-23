@@ -5,6 +5,7 @@ import { JsonLd } from '@/components/JsonLd';
 import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from '@/components/icons';
 import { StudioPageHeader } from '@/components/studio/StudioPageHeader';
 import { StudioContact } from '@/components/studio/StudioContact';
+import { MeridianContact } from '@/components/meridian/MeridianContact';
 import { breadcrumbSchema } from '@/lib/schema';
 import { config } from '@/lib/config';
 import {
@@ -69,6 +70,15 @@ export default function ContactPage() {
   const intro = area
     ? `Serving ${area}. Call, email, or send a message below — we reply within one business day.`
     : 'Call, email, or send a message below — we reply within one business day.';
+
+  if (template === 'meridian') {
+    return (
+      <>
+        {jsonLd}
+        <MeridianContact />
+      </>
+    );
+  }
 
   if (template === 'studio') {
     return (

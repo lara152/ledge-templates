@@ -7,6 +7,7 @@ import { StudioPageHeader } from '@/components/studio/StudioPageHeader';
 import { StudioServices } from '@/components/studio/StudioServices';
 import { StudioProcess } from '@/components/studio/StudioProcess';
 import { StudioCta } from '@/components/studio/StudioCta';
+import { MeridianServices } from '@/components/meridian/MeridianServices';
 import { breadcrumbSchema, serviceSchemas } from '@/lib/schema';
 import { config } from '@/lib/config';
 import { business, contact, services, template } from '@/lib/site';
@@ -44,6 +45,15 @@ export default function ServicesPage() {
   );
   const title = area ? `Services for ${area}` : 'Our services';
   const intro = `Every project starts with a clear scope and an upfront price. Here's exactly what ${business.name} can help you with.`;
+
+  if (template === 'meridian') {
+    return (
+      <>
+        {jsonLd}
+        <MeridianServices />
+      </>
+    );
+  }
 
   if (template === 'studio') {
     return (
