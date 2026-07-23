@@ -1,0 +1,27 @@
+{
+  "name": "ledge-landscaping-sites",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Monorepo: dos sitios de landscaping (high-end + low-cost) que comparten @ledge/ui.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:highend": "npm run dev --workspace apps/highend",
+    "dev:lowcost": "npm run dev --workspace apps/lowcost",
+    "build:highend": "npm run build --workspace apps/highend",
+    "build:lowcost": "npm run build --workspace apps/lowcost",
+    "build": "npm run build:highend && npm run build:lowcost",
+    "preview:highend": "npm run preview --workspace apps/highend",
+    "preview:lowcost": "npm run preview --workspace apps/lowcost",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=18.18"
+  }
+}

@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================================
+   TEMPLATE A · MERIDIAN — IDENTIDAD (charcoal cinemático, serif editorial)
+   Aquí viven los VALORES de los tokens de @ledge/ui para ESTA app. Cambiar estos
+   re-tematiza todo el sitio sin tocar los componentes compartidos.
+   ============================================================================ */
+:root {
+  /* Superficies / texto */
+  --color-bg: #101012; /* charcoal casi negro */
+  --color-surface: #17171a;
+  --color-surface-2: #212126;
+  --color-ink: #f3efe7; /* marfil cálido */
+  --color-muted: #9a978f;
+  --color-line: #2c2c31;
+
+  /* Marca */
+  --color-brand: #c9a24b; /* dorado apagado = lujo discreto */
+  --color-brand-fg: #101012;
+  --color-accent: #7d8a6a; /* verde salvia profundo */
+  --color-accent-fg: #101012;
+
+  /* Tipografía (cargada en index.html vía Google Fonts) */
+  --font-display: 'Cormorant Garamond';
+  --font-body: 'Inter';
+
+  /* Escala */
+  --radius-card: 2px; /* esquinas casi rectas = editorial */
+  --radius-control: 2px;
+  --container-max: 82rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), Georgia, serif;
+    font-weight: 500;
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--color-brand);
+    color: var(--color-brand-fg);
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Utilidad: letra de "eyebrow" editorial reutilizable en el app. */
+@layer components {
+  .eyebrow {
+    @apply text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-brand;
+  }
+}
