@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { MeridianProcess } from '@/components/meridian/MeridianProcess';
+import { NotAvailable } from '@/components/NotAvailable';
 import { business, template } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -10,6 +10,6 @@ export const metadata: Metadata = {
 
 export default function ProcessPage() {
   // Process is a meridian-only surface; other looks don't link it.
-  if (template !== 'meridian') notFound();
+  if (template !== 'meridian') return <NotAvailable />;
   return <MeridianProcess />;
 }

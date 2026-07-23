@@ -194,11 +194,9 @@ export function aboutSection(): AboutSection {
 
 /* ---- "meridian" look helpers -------------------------------------------------- */
 
-/** Portfolio projects with at least a slug, name, and cover image. */
+/** Portfolio projects with at least a slug, name, and a cover object (image may be a placeholder). */
 export function projects(): Project[] {
-  return (config.projects ?? []).filter(
-    (p) => p?.slug?.trim() && p?.name?.trim() && p?.cover?.image?.trim(),
-  );
+  return (config.projects ?? []).filter((p) => Boolean(p?.slug?.trim() && p?.name?.trim() && p?.cover));
 }
 
 /** The first N projects, shown full-bleed on the meridian home. */
