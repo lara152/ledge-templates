@@ -1,22 +1,18 @@
 {
-  "name": "ledge-templates",
+  "name": "ledge-site-factory",
   "private": true,
   "version": "0.0.0",
-  "description": "Ledge web-templates monorepo — hand-built Vite templates (highend, lowcost) sharing @ledge/ui + the Next.js config-driven sitebuilder (classic, studio). One repo, all templates.",
+  "description": "Ledge Site Factory — internal tool to pre-build polished websites for landscape prospects. One Next.js engine (apps/sitebuilder) with selectable looks; a client is a data folder. Source of truth: BRD_LEDGE_SITE_FACTORY.md.",
   "workspaces": [
     "packages/*",
     "apps/*"
   ],
   "scripts": {
-    "dev:highend": "npm run dev --workspace apps/highend",
-    "dev:lowcost": "npm run dev --workspace apps/lowcost",
-    "dev:sitebuilder": "npm run dev --workspace apps/sitebuilder",
-    "build:highend": "npm run build --workspace apps/highend",
-    "build:lowcost": "npm run build --workspace apps/lowcost",
-    "build:sitebuilder": "npm run build --workspace apps/sitebuilder",
-    "build": "npm run build:highend && npm run build:lowcost && npm run build:sitebuilder",
-    "preview:highend": "npm run preview --workspace apps/highend",
-    "preview:lowcost": "npm run preview --workspace apps/lowcost",
+    "dev": "npm run dev --workspace apps/sitebuilder",
+    "build": "npm run build --workspace apps/sitebuilder",
+    "validate": "npm run validate --workspace apps/sitebuilder",
+    "use": "npm run use --workspace apps/sitebuilder",
+    "clients": "npm run clients --workspace apps/sitebuilder",
     "lint": "npm run lint --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present"
   },

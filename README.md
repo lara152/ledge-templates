@@ -1,77 +1,52 @@
-# Ledge Templates — monorepo
+# Ledge Site Factory
 
-**Un solo repo, el hogar de TODOS los templates de sitios web de Ledge.** Cada template es una app
-independiente que corre y se despliega por su cuenta. Hay dos "motores":
+Internal tool to **pre-build polished websites for landscape prospects** ("feedback partners"), from
+content they already publish, before we contact them. The site is the outreach gift. **Not self-serve**
+— no client accounts/logins/dashboards (one consent page at go-live is the only exception).
 
-**Vite — templates hechos a mano (comparten `@ledge/ui`):**
-- **`apps/highend`** — high-end, residencial de lujo (cinemático, charcoal, serif).
-- **`apps/lowcost`** — low-cost, orientado a conversión (luminoso, verde/ámbar, teléfono tappable + formulario corto + urgencia).
+> **Source of truth:** [`BRD_LEDGE_SITE_FACTORY.md`](BRD_LEDGE_SITE_FACTORY.md) (Edgar, v1.0) +
+> [`CONVENTIONS.md`](CONVENTIONS.md). This BRD **supersedes all prior strategy/architecture docs**
+> (the templates write-up, earlier plans). Decisions get recorded against the BRD.
 
-**Next.js — motor config-driven (otro tipo de producto):**
-- **`apps/sitebuilder`** — genera sitios de cliente editando un archivo de config; trae 2 looks: **`classic`** y **`studio`**. Se despliega en **Cloudflare Pages** (no Vercel) y tiene su propio README/CLAUDE dentro.
+## The model (from the BRD)
 
-**Compartido:**
-- **`packages/ui`** — `@ledge/ui`: los Legos + tokens (Button, Card, Section, Grid, ImageSlot, Gallery, Lightbox, BeforeAfter). Lo usan las apps de Vite.
+- **One engine — Next.js static export** (`apps/sitebuilder`). A **client is a data folder**
+  (`clients/<slug>/site.config.json`), never a code copy. Customization is **config-only, no forks ever**
+  → fix the engine once, every client benefits.
+- **Four looks, selectable by one config line** (`"template": "..."`):
+  - `classic`, `studio` — already built into the engine.
+  - `meridian` (was the "highend" Vite app), `greenleaf` (was "lowcost") — **being rewritten as looks**
+    (M1). Their old standalone Vite apps are kept in [`_reference/`](_reference/) as design reference only.
+- **Deploy target: Cloudflare Workers (static assets)** — not Pages, not Vercel. One Worker per site.
+- **Data:** Supabase (registry, leads, consent) + Cloudflare R2 (images). One central lead Worker.
+- **Build cadence:** an operator runs `new-draft <slug>` from a worksheet + a `photos/` folder + a logo.
+  Manual first; the scraper is deferred (see BRD §5).
 
-Stack: **React + Vite + TS + Tailwind + React Router** (highend/lowcost) · **Next.js** (sitebuilder). npm workspaces.
-
-## Estructura
+## Structure
 
 ```
-ledge-templates/
-├── package.json            # workspaces: ["packages/*", "apps/*"]
-├── tsconfig.base.json
+ledge-site-factory/
+├── BRD_LEDGE_SITE_FACTORY.md   ← source of truth
+├── CONVENTIONS.md              ← engineering conventions (point every AI session here first)
+├── apps/
+│   └── sitebuilder/            ← THE engine (Next.js). Looks + clients/<slug>/ live here.
 ├── packages/
-│   └── ui/                 # @ledge/ui — Legos compartidos + tailwind-preset (tokens)
-└── apps/
-    ├── highend/            # Vite — residencial de lujo
-    ├── lowcost/            # Vite — conversión / volumen
-    └── sitebuilder/        # Next.js — motor config-driven (looks: classic, studio)
+│   └── ui/                     ← @ledge/ui — components being vendored into the engine (Gallery, Lightbox, BeforeAfter)
+└── _reference/                 ← retired standalone Vite apps (highend, lowcost) — DESIGN REFERENCE ONLY, not built
 ```
 
-## Cómo funciona el "Lego" compartido (apps de Vite)
-
-- Cada app de Vite resuelve `@ledge/ui` por un **alias** hacia su fuente (`packages/ui/src`). Sin
-  paso de build, y con `resolve.dedupe` hay **una sola copia de React**.
-- `@ledge/ui/tailwind-preset.cjs` define **tokens semánticos** (colores, fuentes, radios) como CSS
-  variables; cada app pone los **valores** en su `src/index.css`. Así los Legos adoptan la identidad
-  de cada app sin tocar el paquete.
-- Regla de oro: lo reutilizable (layout, grid, imágenes, lightbox) va en `packages/ui`; lo que da
-  identidad (paleta, tipografía, tono, copy) vive en cada app.
-- El **sitebuilder** (Next.js) es autocontenido: tiene sus propios componentes y no usa `@ledge/ui`.
-
-## Correr en local
+## Run
 
 ```bash
-npm install               # una vez, en la raíz (instala todos los workspaces)
-
-npm run dev:highend       # Vite   → http://localhost:5173
-npm run dev:lowcost       # Vite   → http://localhost:5174
-npm run dev:sitebuilder   # Next   → http://localhost:3000
+npm install
+npm run dev        # the engine → http://localhost:3000
+npm run clients    # list client data folders + which is active
+npm run use <slug> # pick which client to build
+npm run build      # static export
 ```
 
-Cada app también corre sola con `npm run dev` desde su carpeta.
+## Status — Milestone M1 (Engine)
 
-## Build
-
-```bash
-npm run build:highend      # apps/highend/dist
-npm run build:lowcost      # apps/lowcost/dist
-npm run build:sitebuilder  # apps/sitebuilder/out (export estático Next)
-npm run build              # las tres
-```
-
-## Deploy (una app por proyecto)
-
-Cada app se despliega por separado, apuntando a su carpeta:
-
-| App | Host | Root Directory | Build | Output |
-|---|---|---|---|---|
-| `apps/highend` | Vercel | `apps/highend` | `npm run build` | `dist` |
-| `apps/lowcost` | Vercel | `apps/lowcost` | `npm run build` | `dist` |
-| `apps/sitebuilder` | Cloudflare Pages | `apps/sitebuilder` | `npm run build` | `out` |
-
-Las apps de Vite traen su `vercel.json` (rewrite SPA). El sitebuilder trae su propio README con los
-ajustes de Cloudflare Pages.
-
-> **Replicable y escalable:** para un template nuevo, se agrega otra carpeta en `apps/` — un repo, N sitios.
+Rewriting `meridian` + `greenleaf` as engine looks so all four render from sample configs at visual
+parity (gallery / lightbox / before-after working). Then M2 (send), M3 (go-live path), M4 (operate).
+See the BRD §6 for the full milestone plan.

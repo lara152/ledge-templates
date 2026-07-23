@@ -1,3 +1,7 @@
+> **⚠ SUPERSEDED (2026-07-23).** This write-up did its job — it fed Edgar's decisions. The authoritative
+> plan is now [`BRD_LEDGE_SITE_FACTORY.md`](BRD_LEDGE_SITE_FACTORY.md), which supersedes this document.
+> Kept for context/history only.
+
 # Ledge Templates — current status, how they work, and questions for Edgar
 
 > **Purpose:** bring Edgar up to speed on how the website templates are built today, explain the
