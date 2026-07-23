@@ -8,6 +8,7 @@ import { StudioAbout } from '@/components/studio/StudioAbout';
 import { StudioTestimonials } from '@/components/studio/StudioTestimonials';
 import { StudioCta } from '@/components/studio/StudioCta';
 import { MeridianAbout } from '@/components/meridian/MeridianAbout';
+import { SummitAbout } from '@/components/summit/SummitAbout';
 import { breadcrumbSchema } from '@/lib/schema';
 import { config } from '@/lib/config';
 import { business, contact, credentials, template } from '@/lib/site';
@@ -49,6 +50,15 @@ export default function AboutPage() {
       <>
         {jsonLd}
         <MeridianAbout />
+      </>
+    );
+  }
+
+  if (template === 'summit') {
+    return (
+      <>
+        {jsonLd}
+        <SummitAbout />
       </>
     );
   }

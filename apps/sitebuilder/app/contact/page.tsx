@@ -7,6 +7,7 @@ import { StudioPageHeader } from '@/components/studio/StudioPageHeader';
 import { StudioContact } from '@/components/studio/StudioContact';
 import { MeridianContact } from '@/components/meridian/MeridianContact';
 import { GreenLeafContact } from '@/components/greenleaf/GreenLeafContact';
+import { SummitContact } from '@/components/summit/SummitContact';
 import { breadcrumbSchema } from '@/lib/schema';
 import { config } from '@/lib/config';
 import {
@@ -86,6 +87,15 @@ export default function ContactPage() {
       <>
         {jsonLd}
         <GreenLeafContact />
+      </>
+    );
+  }
+
+  if (template === 'summit') {
+    return (
+      <>
+        {jsonLd}
+        <SummitContact />
       </>
     );
   }

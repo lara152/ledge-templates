@@ -8,9 +8,11 @@ import { StudioHeader } from '@/components/studio/StudioHeader';
 import { MeridianHeader } from '@/components/meridian/MeridianHeader';
 import { GreenLeafHeader } from '@/components/greenleaf/GreenLeafHeader';
 import { GreenLeafUrgencyBar } from '@/components/greenleaf/GreenLeafUrgencyBar';
+import { SummitHeader } from '@/components/summit/SummitHeader';
 import { Footer } from '@/components/Footer';
 import { MeridianFooter } from '@/components/meridian/MeridianFooter';
 import { GreenLeafFooter } from '@/components/greenleaf/GreenLeafFooter';
+import { SummitFooter } from '@/components/summit/SummitFooter';
 import { business, template } from '@/lib/site';
 import { siteUrl } from '@/lib/site';
 import { businessSchema, websiteSchema } from '@/lib/schema';
@@ -88,6 +90,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <GreenLeafUrgencyBar />
             <GreenLeafHeader />
           </>
+        ) : template === 'summit' ? (
+          <SummitHeader />
         ) : (
           <Header />
         )}
@@ -96,6 +100,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <MeridianFooter />
         ) : template === 'greenleaf' ? (
           <GreenLeafFooter />
+        ) : template === 'summit' ? (
+          <SummitFooter />
         ) : (
           <Footer />
         )}

@@ -13,6 +13,7 @@ import { StudioTestimonials } from '@/components/studio/StudioTestimonials';
 import { StudioCta } from '@/components/studio/StudioCta';
 import { MeridianHome } from '@/components/meridian/MeridianHome';
 import { GreenLeafHome } from '@/components/greenleaf/GreenLeafHome';
+import { SummitHome } from '@/components/summit/SummitHome';
 import { faqSchema, serviceSchemas } from '@/lib/schema';
 import { business, contact, template } from '@/lib/site';
 
@@ -33,6 +34,15 @@ export default function HomePage() {
       <>
         <JsonLd data={[...serviceSchemas(), faqSchema()]} />
         <GreenLeafHome />
+      </>
+    );
+  }
+
+  if (template === 'summit') {
+    return (
+      <>
+        <JsonLd data={[...serviceSchemas(), faqSchema()]} />
+        <SummitHome />
       </>
     );
   }

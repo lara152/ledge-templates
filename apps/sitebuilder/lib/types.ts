@@ -36,6 +36,8 @@ export type Contact = {
   social?: string[];
   /** OPTIONAL extension: a Formspree (or compatible) endpoint the contact form POSTs to. Falls back to the Cloudflare Pages Function at /api/contact. */
   formEndpoint?: string;
+  /** "summit": external booking link (e.g. Calendly) for the book-a-call CTA. */
+  bookingUrl?: string;
 };
 
 export type Goal = { primaryCTA: PrimaryCTA };
@@ -135,6 +137,12 @@ export type Review = { name: string; city?: string; rating?: number; text: strin
 /** A service area / per-city SEO page (greenleaf, at /areas/<slug>). */
 export type Area = { slug: string; city: string; blurb?: string; neighborhoods?: string[] };
 
+/** A headline result / metric (summit look — coach/agency for the trade). */
+export type Stat = { value: string; label: string };
+
+/** A podcast episode (summit look). */
+export type PodcastEpisode = { title: string; url?: string; blurb?: string };
+
 export type Testimonial = {
   quote: string;
   author?: string;
@@ -172,7 +180,7 @@ export type Deploy = {
 export type Meta = { lastUpdated?: string };
 
 /** Which design the site renders. Defaults to "classic". */
-export type Template = 'classic' | 'studio' | 'meridian' | 'greenleaf';
+export type Template = 'classic' | 'studio' | 'meridian' | 'greenleaf' | 'summit';
 
 export type SiteConfig = {
   /** Design template. Defaults to "classic" when omitted. */
@@ -204,6 +212,9 @@ export type SiteConfig = {
   reviewsSummary?: { rating?: string; count?: string };
   areas?: Area[];
   urgency?: { banner?: string; hero?: string };
+  /** "summit" look content (coach / agency for the trade). */
+  stats?: Stat[];
+  podcast?: { title?: string; url?: string; blurb?: string; episodes?: PodcastEpisode[] };
 };
 
 /** A FAQ item after normalization — only complete (answered) items survive. */

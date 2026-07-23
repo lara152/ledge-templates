@@ -37,7 +37,7 @@ function validateConfig(config) {
   }
 
   // --- template ---
-  const ALLOWED_TEMPLATES = ['classic', 'studio', 'meridian', 'greenleaf'];
+  const ALLOWED_TEMPLATES = ['classic', 'studio', 'meridian', 'greenleaf', 'summit'];
   if (config.template != null && !ALLOWED_TEMPLATES.includes(config.template)) {
     errors.push(`\`template\` must be one of ${ALLOWED_TEMPLATES.join(' | ')} (got "${config.template}").`);
   }

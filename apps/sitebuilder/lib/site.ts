@@ -7,11 +7,13 @@ import type {
   MediaItem,
   NormalizedFaq,
   Plan,
+  PodcastEpisode,
   PrimaryCTA,
   ProcessStep,
   Project,
   Review,
   ServicePhase,
+  Stat,
   TeamMember,
   Template,
   Trust,
@@ -267,4 +269,23 @@ export function urgency(): { banner?: string; hero?: string } {
 
 export function heroPoints(): string[] {
   return (config.hero?.points ?? []).filter((p) => p?.trim());
+}
+
+/* ---- "summit" look helpers (coach / agency for the trade) --------------------- */
+
+export function stats(): Stat[] {
+  return (config.stats ?? []).filter((s) => Boolean(s?.value?.trim() && s?.label?.trim()));
+}
+
+export function podcast(): { title?: string; url?: string; blurb?: string; episodes?: PodcastEpisode[] } {
+  return config.podcast ?? {};
+}
+
+export function episodes(): PodcastEpisode[] {
+  return (config.podcast?.episodes ?? []).filter((e) => e?.title?.trim());
+}
+
+/** Where the "book a call" CTA points: an external booking link if set, else /contact/. */
+export function bookHref(): string {
+  return config.contact?.bookingUrl?.trim() || '/contact/';
 }

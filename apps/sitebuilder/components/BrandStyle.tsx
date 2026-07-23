@@ -83,11 +83,30 @@ const GREENLEAF: Palette = {
   display: 'var(--font-jakarta), system-ui, sans-serif',
 };
 
+const SUMMIT: Palette = {
+  primary: '#10B981', // emerald — growth / money
+  secondary: '#0B1220',
+  accent: '#A3E635', // lime highlight for numbers
+  radius: '14px',
+  contrast: '#0E1728',
+  neutrals: {
+    '--ink': '#F2F5F9', // near-white
+    '--ink-muted': '#9AA7BD',
+    '--ink-subtle': '#6B7896',
+    '--surface': '#0B1220', // deep navy-black
+    '--surface-raised': '#121A2B',
+    '--surface-sunken': '#0E1728',
+    '--line': '#26314A',
+  },
+  display: 'var(--font-jakarta), system-ui, sans-serif',
+};
+
 const PRESETS: Record<Template, Palette> = {
   classic: CLASSIC,
   studio: STUDIO,
   meridian: MERIDIAN,
   greenleaf: GREENLEAF,
+  summit: SUMMIT,
 };
 
 export function BrandStyle() {
