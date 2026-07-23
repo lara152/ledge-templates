@@ -1,13 +1,16 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, Inter, Fraunces, Cormorant_Garamond } from 'next/font/google';
+import { Space_Grotesk, Inter, Fraunces, Cormorant_Garamond, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { BrandStyle } from '@/components/BrandStyle';
 import { JsonLd } from '@/components/JsonLd';
 import { Header } from '@/components/Header';
 import { StudioHeader } from '@/components/studio/StudioHeader';
 import { MeridianHeader } from '@/components/meridian/MeridianHeader';
+import { GreenLeafHeader } from '@/components/greenleaf/GreenLeafHeader';
+import { GreenLeafUrgencyBar } from '@/components/greenleaf/GreenLeafUrgencyBar';
 import { Footer } from '@/components/Footer';
 import { MeridianFooter } from '@/components/meridian/MeridianFooter';
+import { GreenLeafFooter } from '@/components/greenleaf/GreenLeafFooter';
 import { business, template } from '@/lib/site';
 import { siteUrl } from '@/lib/site';
 import { businessSchema, websiteSchema } from '@/lib/schema';
@@ -21,6 +24,13 @@ const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
   variable: '--font-cormorant',
+  display: 'swap',
+});
+// Friendly geometric sans for the conversion-focused "greenleaf" look.
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['500', '600', '700', '800'],
+  variable: '--font-jakarta',
   display: 'swap',
 });
 
@@ -58,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${display.variable} ${body.variable} ${serif.variable} ${cormorant.variable}`}
+      className={`${display.variable} ${body.variable} ${serif.variable} ${cormorant.variable} ${jakarta.variable}`}
     >
       <body>
         <BrandStyle />
@@ -73,11 +83,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <MeridianHeader />
         ) : template === 'studio' ? (
           <StudioHeader />
+        ) : template === 'greenleaf' ? (
+          <>
+            <GreenLeafUrgencyBar />
+            <GreenLeafHeader />
+          </>
         ) : (
           <Header />
         )}
         <main id="main">{children}</main>
-        {template === 'meridian' ? <MeridianFooter /> : <Footer />}
+        {template === 'meridian' ? (
+          <MeridianFooter />
+        ) : template === 'greenleaf' ? (
+          <GreenLeafFooter />
+        ) : (
+          <Footer />
+        )}
       </body>
     </html>
   );

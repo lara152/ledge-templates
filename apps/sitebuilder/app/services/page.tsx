@@ -8,6 +8,7 @@ import { StudioServices } from '@/components/studio/StudioServices';
 import { StudioProcess } from '@/components/studio/StudioProcess';
 import { StudioCta } from '@/components/studio/StudioCta';
 import { MeridianServices } from '@/components/meridian/MeridianServices';
+import { GreenLeafServices } from '@/components/greenleaf/GreenLeafServices';
 import { breadcrumbSchema, serviceSchemas } from '@/lib/schema';
 import { config } from '@/lib/config';
 import { business, contact, services, template } from '@/lib/site';
@@ -51,6 +52,15 @@ export default function ServicesPage() {
       <>
         {jsonLd}
         <MeridianServices />
+      </>
+    );
+  }
+
+  if (template === 'greenleaf') {
+    return (
+      <>
+        {jsonLd}
+        <GreenLeafServices />
       </>
     );
   }

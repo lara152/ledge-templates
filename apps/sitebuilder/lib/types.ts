@@ -54,6 +54,10 @@ export type Service = {
   priceInfo?: string;
   /** OPTIONAL (image-forward templates): a photo under /public or a URL. */
   image?: string;
+  /** greenleaf: per-service landing at /services/<slug>. */
+  slug?: string;
+  includes?: string[];
+  gallery?: MediaItem[];
 };
 
 /** A photo with optional captions — used by image-forward templates (galleries, heroes). */
@@ -72,6 +76,8 @@ export type Hero = {
   imageAlt?: string;
   headline?: string;
   subhead?: string;
+  /** greenleaf: short value-prop bullets in the hero. */
+  points?: string[];
 };
 
 export type ProcessStep = { title: string; description?: string };
@@ -103,6 +109,31 @@ export type Trust = { awards?: string[]; certifications?: string[]; press?: stri
 
 /** A studio team member (meridian About). */
 export type TeamMember = { name: string; role?: string; image?: string };
+
+/** A pricing plan (greenleaf Pricing). */
+export type Plan = {
+  name: string;
+  price?: string;
+  cadence?: string;
+  blurb?: string;
+  features?: string[];
+  highlighted?: boolean;
+};
+
+/** A before/after pair (greenleaf Portfolio). */
+export type BeforeAfterItem = {
+  city?: string;
+  scope?: string;
+  duration?: string;
+  before: MediaItem;
+  after: MediaItem;
+};
+
+/** A customer review (greenleaf Reviews). */
+export type Review = { name: string; city?: string; rating?: number; text: string; source?: string };
+
+/** A service area / per-city SEO page (greenleaf, at /areas/<slug>). */
+export type Area = { slug: string; city: string; blurb?: string; neighborhoods?: string[] };
 
 export type Testimonial = {
   quote: string;
@@ -140,8 +171,8 @@ export type Deploy = {
 
 export type Meta = { lastUpdated?: string };
 
-/** Which design the site renders. Defaults to "classic". "studio"/"meridian" are image-forward looks. */
-export type Template = 'classic' | 'studio' | 'meridian';
+/** Which design the site renders. Defaults to "classic". */
+export type Template = 'classic' | 'studio' | 'meridian' | 'greenleaf';
 
 export type SiteConfig = {
   /** Design template. Defaults to "classic" when omitted. */
@@ -165,6 +196,14 @@ export type SiteConfig = {
   servicePhases?: ServicePhase[];
   trust?: Trust;
   team?: TeamMember[];
+  /** "greenleaf" look content. */
+  plans?: Plan[];
+  customQuote?: { title?: string; blurb?: string };
+  beforeAfter?: BeforeAfterItem[];
+  reviews?: Review[];
+  reviewsSummary?: { rating?: string; count?: string };
+  areas?: Area[];
+  urgency?: { banner?: string; hero?: string };
 };
 
 /** A FAQ item after normalization — only complete (answered) items survive. */

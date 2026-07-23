@@ -1,12 +1,16 @@
 import { config } from './config';
 import type {
   AboutSection,
+  Area,
+  BeforeAfterItem,
   Hero,
   MediaItem,
   NormalizedFaq,
+  Plan,
   PrimaryCTA,
   ProcessStep,
   Project,
+  Review,
   ServicePhase,
   TeamMember,
   Template,
@@ -221,4 +225,46 @@ export function trust(): Trust {
 /** Studio team members with a name. */
 export function team(): TeamMember[] {
   return (config.team ?? []).filter((m) => m?.name?.trim());
+}
+
+/* ---- "greenleaf" look helpers ------------------------------------------------- */
+
+export function serviceBySlug(slug: string) {
+  return services().find((s) => s.slug === slug);
+}
+
+export function plans(): Plan[] {
+  return (config.plans ?? []).filter((p) => p?.name?.trim());
+}
+
+export function customQuote(): { title?: string; blurb?: string } {
+  return config.customQuote ?? {};
+}
+
+export function beforeAfterItems(): BeforeAfterItem[] {
+  return (config.beforeAfter ?? []).filter((b) => Boolean(b?.before && b?.after));
+}
+
+export function reviews(): Review[] {
+  return (config.reviews ?? []).filter((r) => r?.text?.trim());
+}
+
+export function reviewsSummary(): { rating?: string; count?: string } {
+  return config.reviewsSummary ?? {};
+}
+
+export function areas(): Area[] {
+  return (config.areas ?? []).filter((a) => Boolean(a?.slug?.trim() && a?.city?.trim()));
+}
+
+export function areaBySlug(slug: string) {
+  return areas().find((a) => a.slug === slug);
+}
+
+export function urgency(): { banner?: string; hero?: string } {
+  return config.urgency ?? {};
+}
+
+export function heroPoints(): string[] {
+  return (config.hero?.points ?? []).filter((p) => p?.trim());
 }

@@ -65,10 +65,29 @@ const MERIDIAN: Palette = {
   display: "var(--font-cormorant), 'Georgia', serif",
 };
 
+const GREENLEAF: Palette = {
+  primary: '#2F9E44', // fresh green — trust
+  secondary: '#17251D',
+  accent: '#F08C00', // warm amber — CTAs / urgency
+  radius: '16px', // friendly, rounded
+  contrast: '#17251D',
+  neutrals: {
+    '--ink': '#17251D', // dark green-slate
+    '--ink-muted': '#56655C',
+    '--ink-subtle': '#7C8A80',
+    '--surface': '#FFFFFF',
+    '--surface-raised': '#FFFFFF',
+    '--surface-sunken': '#EEF4EE', // light green tint
+    '--line': '#E0E8E2',
+  },
+  display: 'var(--font-jakarta), system-ui, sans-serif',
+};
+
 const PRESETS: Record<Template, Palette> = {
   classic: CLASSIC,
   studio: STUDIO,
   meridian: MERIDIAN,
+  greenleaf: GREENLEAF,
 };
 
 export function BrandStyle() {

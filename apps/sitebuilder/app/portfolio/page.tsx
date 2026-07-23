@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { MeridianPortfolio } from '@/components/meridian/MeridianPortfolio';
+import { GreenLeafPortfolio } from '@/components/greenleaf/GreenLeafPortfolio';
 import { NotAvailable } from '@/components/NotAvailable';
 import { business, template } from '@/lib/site';
 
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default function PortfolioPage() {
-  // Portfolio is a meridian-only surface; other looks don't link it.
-  if (template !== 'meridian') return <NotAvailable />;
-  return <MeridianPortfolio />;
+  // Portfolio is used by meridian (case studies) and greenleaf (before/after).
+  if (template === 'meridian') return <MeridianPortfolio />;
+  if (template === 'greenleaf') return <GreenLeafPortfolio />;
+  return <NotAvailable />;
 }

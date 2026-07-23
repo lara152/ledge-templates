@@ -6,6 +6,7 @@ import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from '@/components/icons';
 import { StudioPageHeader } from '@/components/studio/StudioPageHeader';
 import { StudioContact } from '@/components/studio/StudioContact';
 import { MeridianContact } from '@/components/meridian/MeridianContact';
+import { GreenLeafContact } from '@/components/greenleaf/GreenLeafContact';
 import { breadcrumbSchema } from '@/lib/schema';
 import { config } from '@/lib/config';
 import {
@@ -76,6 +77,15 @@ export default function ContactPage() {
       <>
         {jsonLd}
         <MeridianContact />
+      </>
+    );
+  }
+
+  if (template === 'greenleaf') {
+    return (
+      <>
+        {jsonLd}
+        <GreenLeafContact />
       </>
     );
   }
